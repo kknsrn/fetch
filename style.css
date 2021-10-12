@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
+
+body {
+  background-color: #ebd9e0 !important;
+  font-family: "Nunito Sans", sans-serif;
+  color: white !important;
+}
+
+.card-black-bg {
+  background-color: #131414 !important;
+}
+
+.card > img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body-ht {
+  height: 210px;
+}
+
+.card-body > p {
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-weight: 700;
+}
+
+.card-text {
+  display: flex;
+  justify-content: flex-start;
+}
