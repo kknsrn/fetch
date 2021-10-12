@@ -1,13 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
 
 body {
-  background-color: #ebd9e0 !important;
+  background-color: #34383a;
   font-family: "Nunito Sans", sans-serif;
-  color: white !important;
+  color: white;
+}
+
+.navbar-border {
+  border-bottom: solid 1px #dfdfdf;
+  background-color: white;
+  z-index: 2;
+}
+
+.filter-row {
+  margin-top: 55px;
+  margin-bottom: 55px;
+}
+
+.input-group-text {
+  background-color: white;
+  border: none;
+}
+
+.form-control-border-none {
+  border: none;
+}
+
+.btn-white {
+  background-color: white;
+  outline: none;
+  padding: 0.54rem 1rem;
 }
 
 .card-black-bg {
-  background-color: #131414 !important;
+  background-color: #202d36;
 }
 
 .card > img {
@@ -27,7 +53,25 @@ body {
   font-weight: 700;
 }
 
-.card-text {
-  display: flex;
-  justify-content: flex-start;
+.btn:focus {
+  box-shadow: none;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 650px) {
+  .card > img {
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .button-float-right {
+    float: right;
+  }
 }
