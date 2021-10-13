@@ -1,239 +1,682 @@
-class calculator {
-    constructor() {
-      this.op1 = null;
-      this.op2 = null;
-      this.op = "";
+let data = [
+    {
+      id: "1",
+      name: "Lura Senger",
+      email: "Xander_Collier@yahoo.com",
+    },
+    {
+      id: "2",
+      name: "Wilburn Weber",
+      email: "Bennett_Kreiger11@yahoo.com",
+    },
+    {
+      id: "3",
+      name: "Tyrique Hahn",
+      email: "Juston.Altenwerth@yahoo.com",
+    },
+    {
+      id: "4",
+      name: "Lenny Bailey",
+      email: "Guiseppe_Hegmann@yahoo.com",
+    },
+    {
+      id: "5",
+      name: "Vladimir Keeling",
+      email: "Louisa_Walsh18@hotmail.com",
+    },
+    {
+      id: "6",
+      name: "Kellie Crona",
+      email: "Chandler_Abernathy@yahoo.com",
+    },
+    {
+      id: "7",
+      name: "Carolina White",
+      email: "Royal50@hotmail.com",
+    },
+    {
+      id: "8",
+      name: "Alfredo Conn",
+      email: "Clarabelle34@hotmail.com",
+    },
+    {
+      id: "9",
+      name: "Stan Shanahan",
+      email: "Lamar.McClure@hotmail.com",
+    },
+    {
+      id: "10",
+      name: "Marvin Fay",
+      email: "Osbaldo58@hotmail.com",
+    },
+    {
+      id: "11",
+      name: "Torrance Rau",
+      email: "Orin45@gmail.com",
+    },
+    {
+      id: "12",
+      name: "Harold Gutmann MD",
+      email: "Alyce.Stracke37@yahoo.com",
+    },
+    {
+      id: "13",
+      name: "Taryn Torphy",
+      email: "Dean_Breitenberg71@hotmail.com",
+    },
+    {
+      id: "14",
+      name: "Bryana Lang",
+      email: "Tatum.Ullrich@yahoo.com",
+    },
+    {
+      id: "15",
+      name: "Nyasia Green DDS",
+      email: "Dino83@gmail.com",
+    },
+    {
+      id: "16",
+      name: "Nasir Gerhold",
+      email: "Lilian_Bashirian8@hotmail.com",
+    },
+    {
+      id: "17",
+      name: "Raymundo Ritchie PhD",
+      email: "Antwan.Schoen15@yahoo.com",
+    },
+    {
+      id: "18",
+      name: "Delmer Marvin",
+      email: "Kiera62@yahoo.com",
+    },
+    {
+      id: "19",
+      name: "Rachel Wilkinson",
+      email: "Foster_Conroy@gmail.com",
+    },
+    {
+      id: "20",
+      name: "Gladys Howell",
+      email: "Constance.Labadie10@yahoo.com",
+    },
+    {
+      id: "21",
+      name: "Ciara Klocko",
+      email: "Harvey76@yahoo.com",
+    },
+    {
+      id: "22",
+      name: "Quentin O'Kon",
+      email: "Amely_Cummings2@yahoo.com",
+    },
+    {
+      id: "23",
+      name: "Ms. Gabriella Kunde",
+      email: "Lorenza_Cummerata@hotmail.com",
+    },
+    {
+      id: "24",
+      name: "Gerald Reilly",
+      email: "Lia_Konopelski@gmail.com",
+    },
+    {
+      id: "25",
+      name: "Brody Carter I",
+      email: "Colten.Wilderman90@hotmail.com",
+    },
+    {
+      id: "26",
+      name: "Alanis Klocko",
+      email: "Johathan.Champlin69@gmail.com",
+    },
+    {
+      id: "27",
+      name: "Caroline Miller",
+      email: "Delaney.Kozey74@gmail.com",
+    },
+    {
+      id: "28",
+      name: "Ms. Merritt McClure",
+      email: "Wendy.Zieme@gmail.com",
+    },
+    {
+      id: "29",
+      name: "Jovani Schoen",
+      email: "Norval_Zieme@hotmail.com",
+    },
+    {
+      id: "30",
+      name: "Berniece Bradtke",
+      email: "Okey.Fisher39@hotmail.com",
+    },
+    {
+      id: "31",
+      name: "Hanna Gottlieb",
+      email: "Edna62@hotmail.com",
+    },
+    {
+      id: "32",
+      name: "Christiana Bergnaum",
+      email: "Donnie.Paucek22@gmail.com",
+    },
+    {
+      id: "33",
+      name: "Reid Stehr",
+      email: "Hiram69@gmail.com",
+    },
+    {
+      id: "34",
+      name: "Evans Ward",
+      email: "Liliane72@hotmail.com",
+    },
+    {
+      id: "35",
+      name: "Miss Enos Davis",
+      email: "Kolby.Grady@hotmail.com",
+    },
+    {
+      id: "36",
+      name: "Mathew Lueilwitz",
+      email: "Mariah.Hagenes@yahoo.com",
+    },
+    {
+      id: "37",
+      name: "Romaine Robel",
+      email: "Sheila19@yahoo.com",
+    },
+    {
+      id: "38",
+      name: "Immanuel Aufderhar",
+      email: "Aileen32@hotmail.com",
+    },
+    {
+      id: "39",
+      name: "Julius Reilly Jr.",
+      email: "Santa89@yahoo.com",
+    },
+    {
+      id: "40",
+      name: "Linnea Borer",
+      email: "Jarrett_Hegmann2@hotmail.com",
+    },
+    {
+      id: "41",
+      name: "Misael Abernathy IV",
+      email: "Robbie42@yahoo.com",
+    },
+    {
+      id: "42",
+      name: "Mr. Gerda Jerde",
+      email: "Gustave36@hotmail.com",
+    },
+    {
+      id: "43",
+      name: "Easton Daugherty",
+      email: "Malcolm.Schuster11@hotmail.com",
+    },
+    {
+      id: "44",
+      name: "Leanna Gutkowski",
+      email: "Chelsea9@gmail.com",
+    },
+    {
+      id: "45",
+      name: "Rollin Trantow",
+      email: "Marques_Hickle26@gmail.com",
+    },
+    {
+      id: "46",
+      name: "Heaven Luettgen",
+      email: "Lonnie.Greenfelder95@hotmail.com",
+    },
+    {
+      id: "47",
+      name: "Gilda Huel",
+      email: "Stephania.Hintz@gmail.com",
+    },
+    {
+      id: "48",
+      name: "Javon Walker",
+      email: "Lamar_Bailey39@yahoo.com",
+    },
+    {
+      id: "49",
+      name: "Stewart King",
+      email: "Chasity_Jenkins82@gmail.com",
+    },
+    {
+      id: "50",
+      name: "Cortez Lueilwitz",
+      email: "Lelia.Mitchell43@gmail.com",
+    },
+    {
+      id: "51",
+      name: "Ora Kilback",
+      email: "Matt25@gmail.com",
+    },
+    {
+      id: "52",
+      name: "Lera Macejkovic",
+      email: "Jamal.Donnelly45@hotmail.com",
+    },
+    {
+      id: "53",
+      name: "Asa Gottlieb",
+      email: "Carolyne.Langosh@yahoo.com",
+    },
+    {
+      id: "54",
+      name: "Avery Nienow",
+      email: "Hudson_Bernhard47@yahoo.com",
+    },
+    {
+      id: "55",
+      name: "Dr. Katrine Ryan",
+      email: "Colten40@gmail.com",
+    },
+    {
+      id: "56",
+      name: "Florida Kulas",
+      email: "Alejandra_Bernhard@yahoo.com",
+    },
+    {
+      id: "57",
+      name: "Mauricio Gerlach",
+      email: "Vincenza_Gusikowski84@hotmail.com",
+    },
+    {
+      id: "58",
+      name: "Chadrick Simonis",
+      email: "Reymundo.Doyle@gmail.com",
+    },
+    {
+      id: "59",
+      name: "Beau Jenkins",
+      email: "Cletus65@hotmail.com",
+    },
+    {
+      id: "60",
+      name: "Camilla Cole",
+      email: "Eda48@yahoo.com",
+    },
+    {
+      id: "61",
+      name: "Abagail MacGyver",
+      email: "Jevon.Koch@hotmail.com",
+    },
+    {
+      id: "62",
+      name: "Ludwig Prohaska",
+      email: "Eldon_DuBuque37@yahoo.com",
+    },
+    {
+      id: "63",
+      name: "Berenice Hane",
+      email: "Lonnie3@gmail.com",
+    },
+    {
+      id: "64",
+      name: "Abel Durgan",
+      email: "Marlee.Weimann42@gmail.com",
+    },
+    {
+      id: "65",
+      name: "Tate Kuhlman",
+      email: "Hope31@yahoo.com",
+    },
+    {
+      id: "66",
+      name: "Mrs. Hermina Daniel",
+      email: "Murphy59@yahoo.com",
+    },
+    {
+      id: "67",
+      name: "Marcelino Nienow",
+      email: "Estefania_Dibbert97@hotmail.com",
+    },
+    {
+      id: "68",
+      name: "Raphaelle Connelly",
+      email: "Josie.Legros70@yahoo.com",
+    },
+    {
+      id: "69",
+      name: "Mina Heaney",
+      email: "Pete.Hermann79@hotmail.com",
+    },
+    {
+      id: "70",
+      name: "Jaida Torp",
+      email: "Jonatan82@yahoo.com",
+    },
+    {
+      id: "71",
+      name: "Megane Fadel",
+      email: "Dandre82@yahoo.com",
+    },
+    {
+      id: "72",
+      name: "Angelo Schimmel V",
+      email: "Frederic54@hotmail.com",
+    },
+    {
+      id: "73",
+      name: "Jaren Ferry DDS",
+      email: "Kristian.Kilback@yahoo.com",
+    },
+    {
+      id: "74",
+      name: "Annette O'Connell",
+      email: "Domenica.Christiansen@gmail.com",
+    },
+    {
+      id: "75",
+      name: "Elenor Rohan PhD",
+      email: "Alvera.Huel48@yahoo.com",
+    },
+    {
+      id: "76",
+      name: "Linnie Beier",
+      email: "Reece_Berge@gmail.com",
+    },
+    {
+      id: "77",
+      name: "Maybelle Lehner",
+      email: "Arlo.Hagenes@gmail.com",
+    },
+    {
+      id: "78",
+      name: "Hailie Haag",
+      email: "Edythe.Lind59@hotmail.com",
+    },
+    {
+      id: "79",
+      name: "Marcelina Schuppe",
+      email: "Kip.Cummerata77@gmail.com",
+    },
+    {
+      id: "80",
+      name: "Ezra Lang",
+      email: "Garret.Swaniawski@hotmail.com",
+    },
+    {
+      id: "81",
+      name: "Carey Kiehn",
+      email: "Sabrina70@gmail.com",
+    },
+    {
+      id: "82",
+      name: "Carole Aufderhar",
+      email: "Efrain.Schamberger77@hotmail.com",
+    },
+    {
+      id: "83",
+      name: "Fanny Beatty",
+      email: "Ewald28@yahoo.com",
+    },
+    {
+      id: "84",
+      name: "Mina Lubowitz",
+      email: "Vincenzo.Herman@gmail.com",
+    },
+    {
+      id: "85",
+      name: "Anabelle Thiel",
+      email: "Amely.Renner@hotmail.com",
+    },
+    {
+      id: "86",
+      name: "Gerry Homenick",
+      email: "Ada_Von54@hotmail.com",
+    },
+    {
+      id: "87",
+      name: "Domenico Maggio",
+      email: "Freeman.Stamm@yahoo.com",
+    },
+    {
+      id: "88",
+      name: "Mauricio Bradtke III",
+      email: "Alford83@yahoo.com",
+    },
+    {
+      id: "89",
+      name: "Bulah Yost III",
+      email: "Nicolas_Schimmel6@yahoo.com",
+    },
+    {
+      id: "90",
+      name: "Orville Dibbert DDS",
+      email: "Bryana_Herzog@yahoo.com",
+    },
+    {
+      id: "91",
+      name: "Autumn Osinski",
+      email: "Davin8@hotmail.com",
+    },
+    {
+      id: "92",
+      name: "Levi Gibson",
+      email: "Deangelo69@gmail.com",
+    },
+    {
+      id: "93",
+      name: "Reva McKenzie",
+      email: "Bret40@hotmail.com",
+    },
+    {
+      id: "94",
+      name: "Jensen Pfannerstill",
+      email: "Dax_Marquardt@hotmail.com",
+    },
+    {
+      id: "95",
+      name: "Tyrese Larson MD",
+      email: "Cecelia85@yahoo.com",
+    },
+    {
+      id: "96",
+      name: "Dayne Sanford",
+      email: "Tyrique_Waters16@hotmail.com",
+    },
+    {
+      id: "97",
+      name: "Jeramy Steuber",
+      email: "Catalina.Stehr24@yahoo.com",
+    },
+    {
+      id: "98",
+      name: "Madge Bogisich",
+      email: "Joey.Marquardt50@gmail.com",
+    },
+    {
+      id: "99",
+      name: "Casimer MacGyver",
+      email: "Julius.Bednar96@yahoo.com",
+    },
+    {
+      id: "100",
+      name: "Arlene Kassulke",
+      email: "Josiane_Smith@yahoo.com",
+    },
+  ];
+  
+  class Paginator {
+    constructor(data, rows, window) {
+      this.rows = rows;
+      this.data = data;
+      this.pageNo = 1;
+      this.window = window;
+    }
+    buildTable() {
+      document.body.innerHTML = "";
+  
+      let div = document.createElement("div");
+      div.setAttribute("class", "frameDiv");
+  
+      let table = document.createElement("table");
+      let thead = document.createElement("thead");
+      let tr = document.createElement("tr");
+      let th1 = document.createElement("th");
+      th1.innerText = "ID";
+      let th2 = document.createElement("th");
+      th2.innerText = "NAME";
+      let th3 = document.createElement("th");
+      th3.innerText = "EMAIL";
+      tr.append(th1, th2, th3);
+      thead.append(tr);
+      table.appendChild(thead);
+  
+      let res = this.buildTableBody();
+      //console.log(res);
+      let tbody = res.tbody;
+      table.append(tbody);
+  
+      let tfoot = this.buildTableFooter(res.noOfPages);
+      table.appendChild(tfoot);
+      div.append(table);
+  
+      let i1 = document.createElement("input");
+      i1.setAttribute("placeHolder", "Window size");
+      i1.setAttribute("type", "Number");
+      i1.setAttribute("onChange", "changeWindowSize(this)");
+  
+      let i2 = document.createElement("input");
+      i2.setAttribute("placeHolder", "No of Rows");
+      i2.setAttribute("type", "Number");
+      i2.setAttribute("onChange", "changeRows(this)");
+  
+      div.append(i1);
+      div.append(i2);
+      document.body.append(div);
     }
   
-    appendNumber(n) {
-      if (this.op2 === null) this.op2 = "";
-      if (n === ".") {
-        if (!this.op2.includes(".")) {
-          if (this.op2 === "") {
-            this.op2 = "0.";
-          } else {
-            this.op2 = this.op2 + n;
-          }
-          document.getElementById("op2Dis").innerText = this.op2;
-        }
-      } else {
-        if (this.op2 === "0") this.op2 = "";
+    buildTableFooter(noOfPages) {
+      let tfoot = document.createElement("tfoot");
+      let tr = document.createElement("tr");
+      let td = document.createElement("td");
+      td.setAttribute("colspan", "3");
+      tr.append(td);
   
-        this.op2 = this.op2 + n;
-        document.getElementById("op2Dis").innerText = this.op2;
+      let maxLeft = Number(this.pageNo) - Math.floor(this.window / 2);
+      let maxRight = Number(this.pageNo) + Math.ceil(this.window / 2);
+      //console.log(this.pageNo, this.window, maxLeft, maxRight);
+  
+      if (maxLeft < 0) {
+        maxLeft = 0;
+        maxRight = this.window;
       }
-    }
-  
-    allClear() {
-      this.op1 = null;
-      this.op2 = null;
-      this.op = "";
-      document.getElementById("opDis").innerText = "";
-      document.getElementById("op1Dis").innerText = "";
-      document.getElementById("op2Dis").innerText = "";
-    }
-  
-    del() {
-      if (this.op2 !== null) {
-        this.op2 = this.op2.toString().slice(0, -1);
-        if (this.op2.length === 0) {
-          this.op2 = null;
-          document.getElementById("op2Dis").innerText = "";
-        } else document.getElementById("op2Dis").innerText = this.op2;
-      }
-    }
-  
-    operate(op) {
-      if (this.op1 === null && this.op2 === null) {
-        document.getElementById("op2Dis").innerText = "No Operands Found";
-      } else if (op === "=") {
-        if (this.op1 !== null && this.op2 !== null) {
-          let res = eval(this.op1 + this.op + this.op2);
-          this.op1 = null;
-          this.op2 = res;
-          this.op = null;
-          document.getElementById("opDis").innerText = "";
-          document.getElementById("op1Dis").innerText = "";
-          document.getElementById("op2Dis").innerText = res;
+      if (maxRight > Number(noOfPages)) {
+        maxLeft = noOfPages - this.window;
+        if (maxLeft < 0) {
+          maxLeft = 0;
         }
-      } else if (
-        op === "+" ||
-        op === "-" ||
-        op === "*" ||
-        op === "/" ||
-        op === "%"
-      ) {
-        if (this.op1 === null) {
-          this.op1 = this.op2;
-          this.op2 = null;
-          this.op = op;
-          //console.log(op);
-          document.getElementById("op1Dis").innerText = this.op1;
-          document.getElementById("opDis").innerText = this.op;
-          document.getElementById("op2Dis").innerText = "";
-        } else if (this.op2 === null) {
-          this.op = op;
-          document.getElementById("opDis").innerText = this.op;
-        } else {
-          console.log(this.op1 + this.op + this.op2);
-          let res = eval(this.op1 + this.op + this.op2);
-          this.op1 = res;
-          this.op2 = null;
-          this.op = op;
-          document.getElementById("op1Dis").innerText = this.op1;
-          document.getElementById("opDis").innerText = this.op;
-          document.getElementById("op2Dis").innerText = "";
-        }
+        maxRight = Number(noOfPages);
       }
+  
+      //console.log(noOfPages);
+      let linkButton = document.createElement("button");
+      linkButton.setAttribute("value", 1);
+      linkButton.setAttribute("onclick", "display(this)");
+      linkButton.setAttribute("class", "numberButton");
+      linkButton.innerText = "First";
+      td.appendChild(linkButton);
+  
+      linkButton = document.createElement("button");
+      linkButton.setAttribute(
+        "value",
+        Number(this.pageNo > 1) ? Number(this.pageNo - 1) : 1
+      );
+      linkButton.setAttribute("onclick", "display(this)");
+      linkButton.setAttribute("class", "numberButton");
+      linkButton.innerText = "Prev";
+      td.appendChild(linkButton);
+  
+      for (let i = maxLeft; i < maxRight; i++) {
+        linkButton = document.createElement("button");
+        linkButton.setAttribute("value", i + 1);
+        linkButton.setAttribute("onclick", "display(this)");
+        linkButton.setAttribute("class", "numberButton");
+        linkButton.innerText = i + 1;
+        //console.log(this.pageNo);
+        //console.log(i + 1);
+  
+        if (Number(i + 1) === Number(this.pageNo)) {
+          //console.log("Active");
+          linkButton.setAttribute("class", "active");
+        }
+        td.appendChild(linkButton);
+      }
+  
+      linkButton = document.createElement("button");
+      linkButton.setAttribute(
+        "value",
+        Number(this.pageNo < noOfPages) ? Number(this.pageNo) + 1 : noOfPages
+      );
+      linkButton.setAttribute("onclick", "display(this)");
+      linkButton.setAttribute("class", "numberButton");
+      linkButton.innerText = "Next";
+      td.appendChild(linkButton);
+  
+      linkButton = document.createElement("button");
+      linkButton.setAttribute("value", noOfPages);
+      linkButton.setAttribute("onclick", "display(this)");
+      linkButton.setAttribute("class", "numberButton");
+      linkButton.innerText = "Last";
+      td.appendChild(linkButton);
+  
+      tfoot.append(tr);
+      return tfoot;
+    }
+  
+    buildTableBody() {
+      let pages = this.getPages();
+      let data = pages.data;
+  
+      let tbody = document.createElement("tbody");
+      for (let i = 0; i < data.length; i++) {
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        td1.innerText = data[i]["id"];
+        let td2 = document.createElement("td");
+        td2.innerText = data[i]["name"];
+        let td3 = document.createElement("td");
+        td3.innerText = data[i]["email"];
+        tr.append(td1, td2, td3);
+        tbody.appendChild(tr);
+      }
+      return { tbody: tbody, noOfPages: pages.pages };
+    }
+  
+    getPages() {
+      let dstart = (this.pageNo - 1) * this.rows;
+      let dend = this.pageNo * this.rows;
+      //console.log(dstart, dend);
+      let trimmedData = this.data.slice(dstart, dend);
+      let pages = Math.ceil(this.data.length / this.rows);
+      return {
+        data: trimmedData,
+        pages: pages,
+      };
     }
   }
   
-  var cal = new calculator();
-  var titleDiv = document.createElement("div");
-  titleDiv.setAttribute("class", "titleDiv");
-  titleDiv.innerText = "Calculator Design";
-  document.body.appendChild(titleDiv);
+  let pg = new Paginator(data, 10, 5);
+  pg.buildTable();
   
-  var calculatorFrame = document.createElement("div");
-  calculatorFrame.setAttribute("class", "calculatorFrame");
+  function changeWindowSize(element) {
+    pg.window = Number(element.value);
+    pg.pageNo = 1;
+    pg.buildTable();
+  }
   
-  var calcDisplay = document.createElement("div");
-  calcDisplay.setAttribute("class", "calcDisplay");
+  function changeRows(element) {
+    pg.rows = Number(element.value);
+    pg.pageNo = 1;
+    pg.buildTable();
+  }
   
-  var op1Dis = document.createElement("div");
-  op1Dis.setAttribute("class", "op1Dis");
-  op1Dis.setAttribute("id", "op1Dis");
-  calcDisplay.appendChild(op1Dis);
-  
-  var opDis = document.createElement("div");
-  opDis.setAttribute("class", "opDis");
-  opDis.setAttribute("id", "opDis");
-  calcDisplay.appendChild(opDis);
-  
-  var op2Dis = document.createElement("div");
-  op2Dis.setAttribute("class", "op2Dis");
-  op2Dis.setAttribute("id", "op2Dis");
-  calcDisplay.appendChild(op2Dis);
-  
-  calculatorFrame.appendChild(calcDisplay);
-  
-  var buttonsFrame = document.createElement("div");
-  buttonsFrame.setAttribute("class", "buttonsFrame");
-  
-  var button0 = document.createElement("button");
-  button0.setAttribute("onclick", "cal.appendNumber('0')");
-  button0.innerText = 0;
-  
-  var buttonDot = document.createElement("button");
-  buttonDot.setAttribute("onclick", "cal.appendNumber('.')");
-  buttonDot.setAttribute("class", "oprClass");
-  buttonDot.innerText = ".";
-  
-  var button1 = document.createElement("button");
-  button1.setAttribute("onclick", "cal.appendNumber('1')");
-  button1.innerText = 1;
-  
-  var button2 = document.createElement("button");
-  button2.setAttribute("onclick", "cal.appendNumber('2')");
-  button2.innerText = 2;
-  
-  var button3 = document.createElement("button");
-  button3.setAttribute("onclick", "cal.appendNumber('3')");
-  button3.innerText = 3;
-  
-  var button4 = document.createElement("button");
-  button4.setAttribute("onclick", "cal.appendNumber('4')");
-  button4.innerText = 4;
-  
-  var button5 = document.createElement("button");
-  button5.setAttribute("onclick", "cal.appendNumber('5')");
-  button5.innerText = 5;
-  
-  var button6 = document.createElement("button");
-  button6.setAttribute("onclick", "cal.appendNumber('6')");
-  button6.innerText = 6;
-  
-  var button7 = document.createElement("button");
-  button7.setAttribute("onclick", "cal.appendNumber('7')");
-  button7.innerText = 7;
-  
-  var button8 = document.createElement("button");
-  button8.setAttribute("onclick", "cal.appendNumber('8')");
-  button8.innerText = 8;
-  
-  var button9 = document.createElement("button");
-  button9.setAttribute("onclick", "cal.appendNumber('9')");
-  button9.innerText = 9;
-  
-  var buttonPlus = document.createElement("button");
-  buttonPlus.setAttribute("onclick", "cal.operate('+')");
-  buttonPlus.setAttribute("class", "oprClass");
-  buttonPlus.innerText = "+";
-  
-  var buttonMinus = document.createElement("button");
-  buttonMinus.setAttribute("onclick", "cal.operate('-')");
-  buttonMinus.setAttribute("class", "oprClass");
-  buttonMinus.innerText = "-";
-  
-  var buttonInt = document.createElement("button");
-  buttonInt.setAttribute("onclick", "cal.operate('*')");
-  buttonInt.setAttribute("class", "oprClass");
-  buttonInt.innerText = "*";
-  
-  var buttonDiv = document.createElement("button");
-  buttonDiv.setAttribute("onclick", "cal.operate('/')");
-  buttonDiv.setAttribute("class", "oprClass");
-  buttonDiv.innerText = "/";
-  
-  var buttonMod = document.createElement("button");
-  buttonMod.setAttribute("onclick", "cal.operate('%')");
-  buttonMod.setAttribute("class", "oprClass");
-  buttonMod.innerText = "%";
-  
-  var buttonAC = document.createElement("button");
-  buttonAC.setAttribute("class", "twox oprClassred");
-  buttonAC.innerText = "AC";
-  buttonAC.setAttribute("onclick", "cal.allClear()");
-  
-  var buttonDel = document.createElement("button");
-  buttonDel.innerText = "DEL";
-  buttonDel.setAttribute("class", "oprClassRed");
-  buttonDel.setAttribute("onclick", "cal.del()");
-  
-  var buttonEQ = document.createElement("button");
-  buttonEQ.innerText = "=";
-  buttonEQ.setAttribute("class", "oprClass");
-  buttonEQ.setAttribute("onclick", "cal.operate('=')");
-  
-  buttonsFrame.append(
-    buttonAC,
-    buttonDel,
-    buttonMod,
-    button1,
-    button2,
-    button3,
-    buttonPlus,
-    button4,
-    button5,
-    button6,
-    buttonMinus,
-    button7,
-    button8,
-    button9,
-    buttonDiv,
-    buttonDot,
-    button0,
-    buttonEQ,
-    buttonInt
-  );
-  
-  calculatorFrame.appendChild(buttonsFrame);
-  document.body.append(calculatorFrame);
-  
-  document.addEventListener("keypress", (event) => {
-    let keyName = event.key;
-    if (Number(keyName) || keyName === "0" || keyName === ".")
-      cal.appendNumber(keyName);
-    if (["+", "-", "%", "/", "*"].includes(keyName)) cal.operate(keyName);
-    if (keyName === "Enter") cal.operate("=");
-  });
+  function display(element) {
+    pg.pageNo = Number(element.value);
+    pg.buildTable();
+  }
