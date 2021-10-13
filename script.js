@@ -1,138 +1,239 @@
-const countries = [
-    {
-      image: "https://flagpedia.net/data/flags/w580/de.png",
-      country: "Germany",
-      population: "81,770,900",
-      region: "Europe",
-      capital: "Berlin"
-    },
-    {
-      image: "https://flagpedia.net/data/flags/w580/au.png",
-      country: "Australia",
-      population: "91,657,312",
-      region: "Aus",
-      capital: "Canberra"
-    },
-    {
-      image: "https://flagpedia.net/data/flags/w580/in.png",
-      country: "India",
-      population: "1,3179,984,812",
-      region: "Asia",
-      capital: "New Delhi"
-    },
-    {
-      image: "https://flagpedia.net/data/flags/w580/kr.png",
-      country: "South Korea",
-      population: "40,400,000",
-      region: "Asia",
-      capital: "Seoul"
-    },
-    {
-      image: "https://flagpedia.net/data/flags/w580/us.png",
-      country: "United States of America",
-      population: "323,947,000",
-      region: "North America",
-      capital: "Washington,D.C"
-    },
-    {
-      image: "https://flagpedia.net/data/flags/w580/tr.png",
-      country: "Republic of Turkey",
-      population: "83 154 997",
-      region: "Asia",
-      capital: "Ankara"
-    },
-    {
-      image: "https://flagpedia.net/data/flags/w580/ge.png",
-      country: "Georgia",
-      population: "3 723 464",
-      region: "Asia",
-      capital: "Tiblisi"
-    },
-    {
-      image: "https://flagpedia.net/data/flags/w580/ru.png",
-      country: "Russian Federation",
-      population: "146 780 720",
-      region: "Europe",
-      capital: "Moscow"
+class calculator {
+    constructor() {
+      this.op1 = null;
+      this.op2 = null;
+      this.op = "";
     }
-  ];
   
-  const mainContainer = document.createElement('div')
-  mainContainer.setAttribute('class','container')
+    appendNumber(n) {
+      if (this.op2 === null) this.op2 = "";
+      if (n === ".") {
+        if (!this.op2.includes(".")) {
+          if (this.op2 === "") {
+            this.op2 = "0.";
+          } else {
+            this.op2 = this.op2 + n;
+          }
+          document.getElementById("op2Dis").innerText = this.op2;
+        }
+      } else {
+        if (this.op2 === "0") this.op2 = "";
   
-  document.body.append(mainContainer)
+        this.op2 = this.op2 + n;
+        document.getElementById("op2Dis").innerText = this.op2;
+      }
+    }
   
-  const row1 = document.createElement('div')
-  row1.setAttribute('class','row')
-  row1.style.marginTop = '45px'
+    allClear() {
+      this.op1 = null;
+      this.op2 = null;
+      this.op = "";
+      document.getElementById("opDis").innerText = "";
+      document.getElementById("op1Dis").innerText = "";
+      document.getElementById("op2Dis").innerText = "";
+    }
   
-  mainContainer.append(row1)
+    del() {
+      if (this.op2 !== null) {
+        this.op2 = this.op2.toString().slice(0, -1);
+        if (this.op2.length === 0) {
+          this.op2 = null;
+          document.getElementById("op2Dis").innerText = "";
+        } else document.getElementById("op2Dis").innerText = this.op2;
+      }
+    }
   
-  countries.forEach((country)=>{
+    operate(op) {
+      if (this.op1 === null && this.op2 === null) {
+        document.getElementById("op2Dis").innerText = "No Operands Found";
+      } else if (op === "=") {
+        if (this.op1 !== null && this.op2 !== null) {
+          let res = eval(this.op1 + this.op + this.op2);
+          this.op1 = null;
+          this.op2 = res;
+          this.op = null;
+          document.getElementById("opDis").innerText = "";
+          document.getElementById("op1Dis").innerText = "";
+          document.getElementById("op2Dis").innerText = res;
+        }
+      } else if (
+        op === "+" ||
+        op === "-" ||
+        op === "*" ||
+        op === "/" ||
+        op === "%"
+      ) {
+        if (this.op1 === null) {
+          this.op1 = this.op2;
+          this.op2 = null;
+          this.op = op;
+          //console.log(op);
+          document.getElementById("op1Dis").innerText = this.op1;
+          document.getElementById("opDis").innerText = this.op;
+          document.getElementById("op2Dis").innerText = "";
+        } else if (this.op2 === null) {
+          this.op = op;
+          document.getElementById("opDis").innerText = this.op;
+        } else {
+          console.log(this.op1 + this.op + this.op2);
+          let res = eval(this.op1 + this.op + this.op2);
+          this.op1 = res;
+          this.op2 = null;
+          this.op = op;
+          document.getElementById("op1Dis").innerText = this.op1;
+          document.getElementById("opDis").innerText = this.op;
+          document.getElementById("op2Dis").innerText = "";
+        }
+      }
+    }
+  }
   
-      
-      const column = document.createElement('div')
-      column.setAttribute('class','col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3')
+  var cal = new calculator();
+  var titleDiv = document.createElement("div");
+  titleDiv.setAttribute("class", "titleDiv");
+  titleDiv.innerText = "Calculator Design";
+  document.body.appendChild(titleDiv);
   
-      row1.append(column)
+  var calculatorFrame = document.createElement("div");
+  calculatorFrame.setAttribute("class", "calculatorFrame");
   
-      const card = document.createElement('div')
-      card.setAttribute('class','card card-black-bg mb-5')
+  var calcDisplay = document.createElement("div");
+  calcDisplay.setAttribute("class", "calcDisplay");
   
-      column.append(card)
+  var op1Dis = document.createElement("div");
+  op1Dis.setAttribute("class", "op1Dis");
+  op1Dis.setAttribute("id", "op1Dis");
+  calcDisplay.appendChild(op1Dis);
   
-      const image = document.createElement('img')
-      image.setAttribute('src',`${country.image}`)
-      image.setAttribute('class','card-img-top')
+  var opDis = document.createElement("div");
+  opDis.setAttribute("class", "opDis");
+  opDis.setAttribute("id", "opDis");
+  calcDisplay.appendChild(opDis);
   
-      const cardBody = document.createElement('div')
-      cardBody.setAttribute('class','card-body card-body-ht')
+  var op2Dis = document.createElement("div");
+  op2Dis.setAttribute("class", "op2Dis");
+  op2Dis.setAttribute("id", "op2Dis");
+  calcDisplay.appendChild(op2Dis);
   
-      const cardHead = document.createElement('h5')
-      cardHead.setAttribute('class','card-title mb-4')
-      cardHead.innerText = country.country
+  calculatorFrame.appendChild(calcDisplay);
   
-      const cardPara1 = document.createElement('p')
-      cardPara1.setAttribute('class','card-text')
+  var buttonsFrame = document.createElement("div");
+  buttonsFrame.setAttribute("class", "buttonsFrame");
   
-      const cardBold1 = document.createElement('b')
-      cardBold1.innerText = 'Population'
-      cardBold1.style.marginRight = '15px'
+  var button0 = document.createElement("button");
+  button0.setAttribute("onclick", "cal.appendNumber('0')");
+  button0.innerText = 0;
   
-      const countryPara1 = document.createElement('p')
-      countryPara1.innerText = country.population
+  var buttonDot = document.createElement("button");
+  buttonDot.setAttribute("onclick", "cal.appendNumber('.')");
+  buttonDot.setAttribute("class", "oprClass");
+  buttonDot.innerText = ".";
   
-      cardPara1.append(cardBold1,countryPara1)
+  var button1 = document.createElement("button");
+  button1.setAttribute("onclick", "cal.appendNumber('1')");
+  button1.innerText = 1;
   
-      const cardPara2 = document.createElement('p')
-      cardPara2.setAttribute('class','card-text')
+  var button2 = document.createElement("button");
+  button2.setAttribute("onclick", "cal.appendNumber('2')");
+  button2.innerText = 2;
   
-      const cardBold2 = document.createElement('b')
-      cardBold2.innerText = 'Region'
-      cardBold2.style.marginRight = '15px'
+  var button3 = document.createElement("button");
+  button3.setAttribute("onclick", "cal.appendNumber('3')");
+  button3.innerText = 3;
   
-      const countryPara2 = document.createElement('p')
-      countryPara2.innerText = country.region
+  var button4 = document.createElement("button");
+  button4.setAttribute("onclick", "cal.appendNumber('4')");
+  button4.innerText = 4;
   
-      cardPara2.append(cardBold2,countryPara2)
+  var button5 = document.createElement("button");
+  button5.setAttribute("onclick", "cal.appendNumber('5')");
+  button5.innerText = 5;
   
-      const cardPara3 = document.createElement('p')
-      cardPara3.setAttribute('class','card-text')
+  var button6 = document.createElement("button");
+  button6.setAttribute("onclick", "cal.appendNumber('6')");
+  button6.innerText = 6;
   
-      const cardBold3 = document.createElement('b')
-      cardBold3.innerText = 'Capital'
-      cardBold3.style.marginRight = '15px'
+  var button7 = document.createElement("button");
+  button7.setAttribute("onclick", "cal.appendNumber('7')");
+  button7.innerText = 7;
   
-      const countryPara3 = document.createElement('p')
-      countryPara3.innerText = country.capital
+  var button8 = document.createElement("button");
+  button8.setAttribute("onclick", "cal.appendNumber('8')");
+  button8.innerText = 8;
   
-      cardPara3.append(cardBold3,countryPara3)
+  var button9 = document.createElement("button");
+  button9.setAttribute("onclick", "cal.appendNumber('9')");
+  button9.innerText = 9;
   
-      cardBody.append(cardHead,cardPara1,cardPara2,cardPara3)
+  var buttonPlus = document.createElement("button");
+  buttonPlus.setAttribute("onclick", "cal.operate('+')");
+  buttonPlus.setAttribute("class", "oprClass");
+  buttonPlus.innerText = "+";
   
-      card.append(image,cardBody)
+  var buttonMinus = document.createElement("button");
+  buttonMinus.setAttribute("onclick", "cal.operate('-')");
+  buttonMinus.setAttribute("class", "oprClass");
+  buttonMinus.innerText = "-";
   
+  var buttonInt = document.createElement("button");
+  buttonInt.setAttribute("onclick", "cal.operate('*')");
+  buttonInt.setAttribute("class", "oprClass");
+  buttonInt.innerText = "*";
   
-  })
+  var buttonDiv = document.createElement("button");
+  buttonDiv.setAttribute("onclick", "cal.operate('/')");
+  buttonDiv.setAttribute("class", "oprClass");
+  buttonDiv.innerText = "/";
   
+  var buttonMod = document.createElement("button");
+  buttonMod.setAttribute("onclick", "cal.operate('%')");
+  buttonMod.setAttribute("class", "oprClass");
+  buttonMod.innerText = "%";
   
+  var buttonAC = document.createElement("button");
+  buttonAC.setAttribute("class", "twox oprClassred");
+  buttonAC.innerText = "AC";
+  buttonAC.setAttribute("onclick", "cal.allClear()");
+  
+  var buttonDel = document.createElement("button");
+  buttonDel.innerText = "DEL";
+  buttonDel.setAttribute("class", "oprClassRed");
+  buttonDel.setAttribute("onclick", "cal.del()");
+  
+  var buttonEQ = document.createElement("button");
+  buttonEQ.innerText = "=";
+  buttonEQ.setAttribute("class", "oprClass");
+  buttonEQ.setAttribute("onclick", "cal.operate('=')");
+  
+  buttonsFrame.append(
+    buttonAC,
+    buttonDel,
+    buttonMod,
+    button1,
+    button2,
+    button3,
+    buttonPlus,
+    button4,
+    button5,
+    button6,
+    buttonMinus,
+    button7,
+    button8,
+    button9,
+    buttonDiv,
+    buttonDot,
+    button0,
+    buttonEQ,
+    buttonInt
+  );
+  
+  calculatorFrame.appendChild(buttonsFrame);
+  document.body.append(calculatorFrame);
+  
+  document.addEventListener("keypress", (event) => {
+    let keyName = event.key;
+    if (Number(keyName) || keyName === "0" || keyName === ".")
+      cal.appendNumber(keyName);
+    if (["+", "-", "%", "/", "*"].includes(keyName)) cal.operate(keyName);
+    if (keyName === "Enter") cal.operate("=");
+  });
