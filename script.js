@@ -1,36 +1,29 @@
-setTimeout(function () {
-    document.getElementById("content1").innerText = 10;
-    setTimeout(function () {
-      document.getElementById("content1").innerText = 9;
-      setTimeout(function () {
-        document.getElementById("content1").innerText = 8;
-        setTimeout(function () {
-          document.getElementById("content1").innerText = 7;
-          setTimeout(function () {
-            document.getElementById("content1").innerText = 6;
-            setTimeout(function () {
-              document.getElementById("content1").innerText = 5;
-              setTimeout(function () {
-                document.getElementById("content1").innerText = 4;
-                setTimeout(function () {
-                  document.getElementById("content1").innerText = 3;
-                  setTimeout(function () {
-                    document.getElementById("content1").innerText = 2;
-                    setTimeout(function () {
-                      document.getElementById("content1").innerText = 1;
-                      setTimeout(function () {
-                        document.getElementById("content1").innerText = "";
-                        document.getElementById(
-                          "content2"
-                        ).innerText = "happy Independence day".toUpperCase();
-                      }, 1000);
-                    }, 1000);
-                  }, 1000);
-                }, 1000);
-              }, 1000);
-            }, 1000);
-          }, 1000);
-        }, 1000);
-      }, 1000);
-    }, 1000);
-  }, 0);
+const msg = (count) =>
+new Promise((resolve,reject) => {
+
+    if (count > 1){
+        setTimeout(() => {
+            document.querySelector(".countdown").innerText = count;
+            resolve(count);
+        },1000);
+    }else {
+        setTimeout(()=>{
+            document.querySelector("countdown").innerText =
+            "Happy independence day";
+            reject("completed");
+        },1000);
+    }
+});
+
+msg(9)
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .then((ct) => msg(--ct))
+    .catch((err) => console.log(err));   
