@@ -1,77 +1,90 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
-
 body {
-  background-color: #34383a;
-  font-family: "Nunito Sans", sans-serif;
-  color: white;
-}
-
-.navbar-border {
-  border-bottom: solid 1px #dfdfdf;
-  background-color: white;
-  z-index: 2;
-}
-
-.filter-row {
-  margin-top: 55px;
-  margin-bottom: 55px;
-}
-
-.input-group-text {
-  background-color: white;
-  border: none;
-}
-
-.form-control-border-none {
-  border: none;
-}
-
-.btn-white {
-  background-color: white;
-  outline: none;
-  padding: 0.54rem 1rem;
-}
-
-.card-black-bg {
-  background-color: #202d36;
-}
-
-.card > img {
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-body-ht {
-  height: 210px;
-}
-
-.card-body > p {
-  margin-bottom: 0.5rem;
-}
-
-.card-title {
-  font-weight: 700;
-}
-
-.btn:focus {
-  box-shadow: none;
-}
-
-.form-control:focus {
-  box-shadow: none;
-}
-
-.navbar-brand {
-  font-weight: 700;
-}
-
-@media screen and (min-width: 650px) {
-  .card > img {
-    height: 150px;
-    object-fit: cover;
+    background-color: rgb(242, 255, 170);
   }
-
-  .button-float-right {
-    float: right;
+  .titleDiv {
+    color: Black;
   }
-}
+  .titleDiv {
+    position: relative;
+    font-size: 50px;
+    font-weight: bold;
+    left: 33%;
+  }
+  .calculatorFrame {
+    position: relative;
+    left: 30%;
+    right: 30%;
+    width: 514px;
+    height: 410px;
+    background-color: rgb(140, 141, 138);
+    margin-top: 50px;
+    border: 3px solid black;
+  }
+  .calcDisplay {
+    position: relative;
+    margin: 5px;
+    top: 5px;
+    background-color: rgb(46, 44, 44);
+    height: 100px;
+    color: white;
+    font-weight: bold;
+    padding-right: 10px;
+    padding-top: 5px;
+    border: 3px solid white;
+  }
+  .buttonsFrame {
+    position: relative;
+    top: 2px;
+    margin: 5px;
+  }
+  button {
+    width: 120px;
+    height: 50px;
+    background-color: rgb(164, 255, 164);
+    font-weight: bold;
+    margin: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .twox {
+    width: 245px;
+  }
+  button:hover {
+    background-color: rgb(250, 153, 8);
+    color: white;
+  }
+  
+  .op1Dis {
+    top: 2px;
+    position: relative;
+    margin: 2px;
+    height: 30%;
+    text-align: right;
+    overflow: hidden;
+  }
+  .op2Dis {
+    top: 2px;
+    position: relative;
+    margin: 2px;
+    height: 30%;
+    text-align: right;
+    overflow: hidden;
+    font-size: 30px;
+  }
+  
+  .opDis {
+    top: 2px;
+    position: relative;
+    margin: 2px;
+    height: 30%;
+    text-align: right;
+    font-size: 25px;
+  }
+  .oprClass {
+    background-color: rgb(96, 191, 255);
+    color: white;
+    font-weight: bold;
+  }
+  .oprClassRed {
+    background-color: rgb(255, 153, 153);
+    color: white;
+  }
