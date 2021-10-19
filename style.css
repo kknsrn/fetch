@@ -1,1 +1,47 @@
+.user-contaier{
+    background-color:white;
+    margin:2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    gap: 1rem;
+    transition:all 0.5s;
+}
+
+body{
+    background-color: rgb(5, 5, 4);
+    background-image: linear-gradient(to right top, #0c0a0b, #4c60c1, #306dc7, #0078c9, #0090d3, #00a6d3, #00b9cc, #2ecbc1);
+}
+
+.user-avatar{
+    border-radius: 50%;
+    height: 10rem;
+    width: 8rem;
+    object-fit: cover;
+}
+
+
+.user-name{
+    font-size:1.4rem;
+}
+
+.user-contaier:hover{
+    transform: scale(1.1);
+
+}
+
+.user-contaier:hover .user-name{
+    color:rgb(216, 208, 210);
+}
+
+.user-form{
+    padding: 1rem;
+    margin:2rem;
+}
+
+.edit-user-form{
+    display: none;
+}
+
+
 
